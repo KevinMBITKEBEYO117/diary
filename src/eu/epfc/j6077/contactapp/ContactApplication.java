@@ -1,7 +1,12 @@
 package eu.epfc.j6077.contactapp;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
+import java.util.Scanner;
+
 public class ContactApplication {
-    private ContactUC contactUC;
+    private final ContactUC contactUC;
 
     public ContactApplication(ContactUC contactUC) {
         this.contactUC = contactUC;
@@ -14,10 +19,15 @@ public class ContactApplication {
         } else {
             connectionString = "jdbc:h2:./contact";
         }
-        ContactDao contactDao = new ContactDao(connectionString);
-        ContactUI contactUI = new ContactUI();
+
+        IContactDao contactDao = new ContactDao(connectionString);
+        PrintStream printStream = System.out;
+        ContactUI contactUI = new ContactUI(new Scanner(System.in), printStream);
         ContactUC contactUC = new ContactUC(contactDao, contactUI);
-        new ContactApplication(contactUC).run();
+        ContactApplication contactApplication = new ContactApplication(contactUC);
+
+        contactApplication.run();
+        printStream.close();
     }
 
     public void run() {

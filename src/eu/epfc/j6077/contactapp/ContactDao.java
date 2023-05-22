@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContactDao {
+public class ContactDao implements IContactDao {
     private final String connectionString;
 
     public ContactDao(String connectionString) {
@@ -73,7 +73,7 @@ public class ContactDao {
         return contacts;
     }
 
-    public void initialize() {
+    private void initialize() {
         String sql = "create table if not exists CONTACT (" +
                 "  ID integer primary key auto_increment," +
                 "  FIRSTNAME varchar(32) not null," +

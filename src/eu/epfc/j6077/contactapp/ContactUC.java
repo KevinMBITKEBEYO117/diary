@@ -3,10 +3,10 @@ package eu.epfc.j6077.contactapp;
 import java.util.List;
 
 public class ContactUC {
-    private ContactUI contactUI;
-    private ContactDao contactDao;
+    private final ContactUI contactUI;
+    private final IContactDao contactDao;
 
-    public ContactUC(ContactDao contactDao, ContactUI contactUI) {
+    public ContactUC(IContactDao contactDao, ContactUI contactUI) {
         this.contactDao = contactDao;
         this.contactUI = contactUI;
     }
