@@ -14,22 +14,22 @@ public class ContactUC {
         return contactUI.showMenu();
     }
 
-    public void addContact() {
+    public void add() {
         Contact contact = contactUI.showAddForm();
         contactDao.add(contact);
     }
 
-    public void deleteContact() {
+    public void delete() {
         int id = contactUI.showDeleteForm();
         contactDao.delete(id);
     }
 
-    public void updateContact() {
+    public void update() {
         Contact contact = contactUI.showUpdateForm();
         contactDao.update(contact);
     }
 
-    public void consultContacts() {
+    public void consult() {
         List<Contact> contacts = contactDao.fetch();
         contactUI.showList(contacts);
     }

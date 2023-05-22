@@ -4,7 +4,7 @@ import java.io.PrintStream;
 import java.util.List;
 import java.util.Scanner;
 
-public class ContactUI {
+public class ContactUI implements IContactUI {
     private final Scanner input;
     private final PrintStream output;
 
@@ -13,6 +13,7 @@ public class ContactUI {
         this.output = output;
     }
 
+    @Override
     public String showMenu() {
         output.println("\nChoisissez dans les options suivantes");
         output.println("(1) lister les contacts");
@@ -22,12 +23,14 @@ public class ContactUI {
         output.println("(Q) quitter l'application");
         return input.nextLine();
     }
+    @Override
     public int showDeleteForm() {
         output.println("\nFormulaire de suppression d'un contact");
         output.print("Identifiant: ");
         return Integer.parseInt(input.nextLine());
     }
 
+    @Override
     public Contact showUpdateForm() {
         output.println("\nFormulaire de modification d'un contact");
         output.print("Identifiant: ");
@@ -43,6 +46,7 @@ public class ContactUI {
         return new Contact(id, firstName, lastName, email, phone);
     }
 
+    @Override
     public Contact showAddForm() {
         output.println("\nFormulaire de contact");
         output.print("Prénom: ");
@@ -56,6 +60,7 @@ public class ContactUI {
         return new Contact(firstName, lastName, email, phone);
     }
 
+    @Override
     public void showList(List<Contact> contacts) {
         output.println("\nListe des contacts:");
         for(Contact c : contacts) {

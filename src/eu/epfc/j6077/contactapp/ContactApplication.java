@@ -1,7 +1,5 @@
 package eu.epfc.j6077.contactapp;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.Scanner;
 
@@ -35,10 +33,10 @@ public class ContactApplication {
         do {
             choice = contactUC.showMenu();
             switch (choice) {
-                case "1" -> contactUC.consultContacts();
-                case "2" -> contactUC.addContact();
-                case "3" -> contactUC.updateContact();
-                case "4" -> contactUC.deleteContact();
+                case "1" -> contactUC.consult();
+                case "2" -> contactUC.add();
+                case "3" -> contactUC.update();
+                case "4" -> contactUC.delete();
             }
         } while (! choice.equals("Q"));
     }
