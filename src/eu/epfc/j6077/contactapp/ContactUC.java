@@ -3,13 +3,13 @@ package eu.epfc.j6077.contactapp;
 import java.util.List;
 
 public class ContactUC {
-    private ContactUI contactUI = new ContactUI();
+    private ContactUI contactUI;
     private ContactDao contactDao;
 
-    public ContactUC(String connectionString) {
-        contactDao = new ContactDao(connectionString);
+    public ContactUC(ContactDao contactDao, ContactUI contactUI) {
+        this.contactDao = contactDao;
+        this.contactUI = contactUI;
     }
-
     public String showMenu() {
         return contactUI.showMenu();
     }

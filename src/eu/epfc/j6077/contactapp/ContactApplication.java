@@ -3,8 +3,8 @@ package eu.epfc.j6077.contactapp;
 public class ContactApplication {
     private ContactUC contactUC;
 
-    public ContactApplication(String connectionString) {
-        contactUC = new ContactUC(connectionString);
+    public ContactApplication(ContactUC contactUC) {
+        this.contactUC = contactUC;
     }
 
     public static void main(String[] args) {
@@ -14,7 +14,10 @@ public class ContactApplication {
         } else {
             connectionString = "jdbc:h2:./contact";
         }
-        new ContactApplication(connectionString).run();
+        ContactDao contactDao = new ContactDao(connectionString);
+        ContactUI contactUI = new ContactUI();
+        ContactUC contactUC = new ContactUC(contactDao, contactUI);
+        new ContactApplication(contactUC).run();
     }
 
     public void run() {
