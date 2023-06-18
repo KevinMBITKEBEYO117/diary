@@ -1,25 +1,24 @@
 package eu.epfc.j6077.contactapp;
 
+import java.time.LocalDate;
+
 public class Diary {
     private int id;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String phone;
+    private String title;
+    private Boolean isPublic;
+    private LocalDate begin;
 
-    public Diary(String firstName, String lastName, String email, String phone) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.phone = phone;
+    public Diary(String title, Boolean isPublic, LocalDate begin) {
+        this.title = title;
+        this.isPublic = isPublic;
+        this.begin = begin;
     }
 
-    public Diary(int id, String firstName, String lastName, String email, String phone) {
+    public Diary(int id, String title, Boolean isPublic, LocalDate begin) {
         this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.phone = phone;
+        this.title = title;
+        this.isPublic = isPublic;
+        this.begin = begin;
     }
 
     public int getId() {
@@ -30,35 +29,29 @@ public class Diary {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getTitle() {
+        return title;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getLastName() {
-        return lastName;
+    public Boolean getIsPublic() {
+        return isPublic;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setIsPublic(Boolean isPublic) {
+        this.isPublic = isPublic;
     }
 
-    public String getEmail() {
-        return email;
+    public LocalDate getBegin() {
+        return begin;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setBegin(LocalDate begin) {
+        this.begin = begin;
     }
 
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+   
 }
