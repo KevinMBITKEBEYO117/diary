@@ -53,5 +53,4 @@ public class Diary {
         this.begin = begin;
     }
 
-   
 }

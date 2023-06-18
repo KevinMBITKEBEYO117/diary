@@ -8,7 +8,7 @@ public class DiaryUC {
 
     public DiaryUC(IDiaryDao diaryDao, DiaryUI diaryUI) {
         this.diaryDao = diaryDao;
-        this.diaryDao = diaryUI;
+        this.diaryUI = diaryUI;
     }
     public String showMenu() {
         return diaryUI.showMenu();
