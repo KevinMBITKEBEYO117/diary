@@ -4,37 +4,37 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContactDao implements IContactDao {
+public class DiaryDao implements IDiaryDao {
     private final String connectionString;
 
-    public ContactDao(String connectionString) {
+    public DiaryDao(String connectionString) {
         this.connectionString = connectionString;
         initialize();
     }
 
-    public void add(Contact contact) {
+    public void add(Diary diary) {
         try (Connection connection = DriverManager.getConnection(connectionString)) {
             String sql = "insert into CONTACT (FIRSTNAME, LASTNAME, EMAIL, PHONE) VALUES (?,?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, contact.getFirstName());
-            preparedStatement.setString(2, contact.getLastName());
-            preparedStatement.setString(3, contact.getEmail());
-            preparedStatement.setString(4, contact.getPhone());
+            preparedStatement.setString(1, diary.getFirstName());
+            preparedStatement.setString(2, diary.getLastName());
+            preparedStatement.setString(3, diary.getEmail());
+            preparedStatement.setString(4, diary.getPhone());
             preparedStatement.execute();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public void update(Contact contact) {
+    public void update(Diary diary) {
         try (Connection connection = DriverManager.getConnection(connectionString)) {
             String sql = "update CONTACT set FIRSTNAME=?, LASTNAME=?, EMAIL=?, PHONE=? where ID=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, contact.getFirstName());
-            preparedStatement.setString(2, contact.getLastName());
-            preparedStatement.setString(3, contact.getEmail());
-            preparedStatement.setString(4, contact.getPhone());
-            preparedStatement.setInt(5, contact.getId());
+            preparedStatement.setString(1, diary.getFirstName());
+            preparedStatement.setString(2, diary.getLastName());
+            preparedStatement.setString(3, diary.getEmail());
+            preparedStatement.setString(4, diary.getPhone());
+            preparedStatement.setInt(5, diary.getId());
             preparedStatement.execute();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -52,8 +52,8 @@ public class ContactDao implements IContactDao {
         }
     }
 
-    public List<Contact> fetch() {
-        List<Contact> contacts = new ArrayList<>();
+    public List<Diary> fetch() {
+        List<Diary> diarys = new ArrayList<>();
         try (Connection connection = DriverManager.getConnection(connectionString)){
             String sql = "select ID, FIRSTNAME, LASTNAME, EMAIL, PHONE from CONTACT";
             Statement statement = connection.createStatement();
@@ -64,13 +64,13 @@ public class ContactDao implements IContactDao {
                 String lastName = resultSet.getString("LASTNAME");
                 String email = resultSet.getString("EMAIL");
                 String phone = resultSet.getString("PHONE");
-                Contact contact = new Contact(id, firstName, lastName, email, phone);
-                contacts.add(contact);
+                Diary diary = new Diary(id, firstName, lastName, email, phone);
+                diarys.add(diary);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return contacts;
+        return diarys;
     }
 
     private void initialize() {

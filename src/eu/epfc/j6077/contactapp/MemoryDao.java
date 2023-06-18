@@ -3,35 +3,35 @@ package eu.epfc.j6077.contactapp;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MemoryDao implements IContactDao {
-    private final List<Contact> contacts = new ArrayList<>();
+public class MemoryDao implements IDiaryDao {
+    private final List<Diary> diarys = new ArrayList<>();
 
     @Override
-    public void add(Contact contact) {
-        contacts.add(contact);
+    public void add(Diary diary) {
+        diarys.add(diary);
     }
 
     @Override
     public void delete(int id) {
-        for (Contact contact : contacts) {
-            if (contact.getId() == id) {
-                contacts.remove(contact);
+        for (Diary diary : diarys) {
+            if (diary.getId() == id) {
+                diarys.remove(diary);
                 return;
             }
         }
     }
 
     @Override
-    public List<Contact> fetch() {
-        return contacts;
+    public List<Diary> fetch() {
+        return diarys;
     }
 
     @Override
-    public void update(Contact contact) {
-        for (Contact c: contacts) {
-            if (c.getId() == contact.getId()) {
-                contacts.remove(c);
-                contacts.add(contact);
+    public void update(Diary diary) {
+        for (Diary c: diarys) {
+            if (c.getId() == diary.getId()) {
+                diarys.remove(c);
+                diarys.add(diary);
             }
         }
     }

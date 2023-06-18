@@ -1,20 +1,20 @@
 package eu.epfc.j6077.contactapp;
 
-public class    Contact {
+public class Diary {
     private int id;
     private String firstName;
     private String lastName;
     private String email;
     private String phone;
 
-    public Contact(String firstName, String lastName, String email, String phone) {
+    public Diary(String firstName, String lastName, String email, String phone) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
     }
 
-    public Contact(int id, String firstName, String lastName, String email, String phone) {
+    public Diary(int id, String firstName, String lastName, String email, String phone) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

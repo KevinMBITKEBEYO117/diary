@@ -4,11 +4,11 @@ import java.io.PrintStream;
 import java.util.List;
 import java.util.Scanner;
 
-public class ContactUI implements IContactUI {
+public class DiaryUI implements IDiaryUI {
     private final Scanner input;
     private final PrintStream output;
 
-    public ContactUI(Scanner input, PrintStream output) {
+    public DiaryUI(Scanner input, PrintStream output) {
         this.input = input;
         this.output = output;
     }
@@ -23,6 +23,7 @@ public class ContactUI implements IContactUI {
         output.println("(Q) quitter l'application");
         return input.nextLine();
     }
+
     @Override
     public int showDeleteForm() {
         output.println("\nFormulaire de suppression d'un contact");
@@ -31,7 +32,7 @@ public class ContactUI implements IContactUI {
     }
 
     @Override
-    public Contact showUpdateForm() {
+    public Diary showUpdateForm() {
         output.println("\nFormulaire de modification d'un contact");
         output.print("Identifiant: ");
         int id = Integer.parseInt(input.nextLine());
@@ -43,11 +44,11 @@ public class ContactUI implements IContactUI {
         String email = input.nextLine();
         output.print("Téléphone: ");
         String phone = input.nextLine();
-        return new Contact(id, firstName, lastName, email, phone);
+        return new Diary(id, firstName, lastName, email, phone);
     }
 
     @Override
-    public Contact showAddForm() {
+    public Diary showAddForm() {
         output.println("\nFormulaire de contact");
         output.print("Prénom: ");
         String firstName = input.nextLine();
@@ -57,13 +58,13 @@ public class ContactUI implements IContactUI {
         String email = input.nextLine();
         output.print("Téléphone: ");
         String phone = input.nextLine();
-        return new Contact(firstName, lastName, email, phone);
+        return new Diary(firstName, lastName, email, phone);
     }
 
     @Override
-    public void showList(List<Contact> contacts) {
+    public void showList(List<Diary> diarys) {
         output.println("\nListe des contacts:");
-        for(Contact c : contacts) {
+        for (Diary c : diarys) {
             output.println(String.join(" - ", String.valueOf(c.getId()), c.getFirstName(), c.getLastName(),
                     c.getEmail(), c.getPhone()));
         }
